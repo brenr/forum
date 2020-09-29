@@ -40,7 +40,7 @@ This forum is written in node.js and is designed to be extremely modular.
 
   - **thread** > Columns
     - **id** *integer* - Primary key
-    - **user_id** *integer* - The user that created the thread
+    - **user_id** *integer* - The owner of the thread
     - **date_created** *integer* - When the thread was created
     - **category_id** *integer* - The category this thread is under
     - **title** *text* - The thread title
