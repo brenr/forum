@@ -4,6 +4,7 @@
   "description": "## Introduction This forum is written in node.js and is designed to be extremely modular.",
   "main": "index.js",
   "scripts": {
+    "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

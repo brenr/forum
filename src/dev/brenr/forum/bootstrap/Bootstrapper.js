@@ -1,3 +1,6 @@
+const express = require('express');
+const config = require('../../../../../config.js');
+const ForumRouter = require('../routing/ForumRouter.js');
 
 module.exports = class Bootstrapper {
 
@@ -9,22 +12,33 @@ module.exports = class Bootstrapper {
         // Initialize express server if necessary
         expressServer = Bootstrapper.lazilyInitializeExpress(expressServer);
 
+
         // Set the templating engine to EJS
-        this.set('view engine', 'ejs');
+        expressServer.set('view engine', 'ejs');
+
+
+        // TO DO add express-session middleware
+
 
         // Bind the session handler middleware
-        const sessionHandler = new SessionHandler();
-        this.expressServer.use((request, response, next) => {
-            sessionHandler.handle(request, response, next);
-        });
+        // const sessionHandler = new SessionHandler();
+        // expressServer.expressServer.use((request, response, next) => {
+        //     sessionHandler.handle(request, response, next);
+        // });
 
+
+        // Routing
+        const forumRouter = new ForumRouter();
+        expressServer.use(forumRouter);
     }
 
     static lazilyInitializeExpress(expressServer) {
         if (expressServer !== undefined && expressServer instanceof Express) {
             return expressServer;
         }
-        return express();
+        const server = express();
+        server.listen(config.EXPRESS_PORT);
+        return server;
     }
 
 }
