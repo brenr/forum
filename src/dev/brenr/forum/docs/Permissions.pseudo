@@ -1,0 +1,40 @@
+Each set of permissions can contain 32 values. The ordinal in the enum refers to the bit position.
+
+A forum thread, category or section may be accessible by certain users and groups.
+
+Entities:
+ - Section
+ - Category
+ - Thread
+
+UserGroup
+User
+
+
+
+
+Each thread creator has the ability to add permissions based on user group or user id.
+
+
+Start with child most entity and work our way up the ancestral chain.
+We first check user groups until we reach a zero bit. If it's still 1, we then checking users for that permission access.
+
+User roles will need to have a power level. This enforces users with lower powers cannot affect users of higher power levels.
+
+
+
+
+
+Permissions {
+  CAN_ACCESS            //  0 User is allowed to access the thread
+  CAN_RENAME            //  1 User is allowed to rename this entity
+  CAN_HIDE_THREAD       //  2 User is allowed to hide the thread from being indexed
+  CAN_STICKY_THREAD     //  3 User is allowed to sticky the thread
+  CAN_CREATE_POST       //  4 User is allowed to post in the thread
+  CAN_EDIT_OWN_POST     //  5 User is allowed to edit their own posts
+  CAN_EDIT_OTHER_POSTS  //  6 User is allowed to edit other user's posts
+  CAN_HIDE_POSTS        //  7 User is allowed to hide posts (self or other)
+  CAN_QUOTE_POSTS       //  8 User is allowed to quote posts
+  CAN_POST_IMAGES       //  9 User is allowed to post images
+  CAN_POST_LINKS        // 10 User is allowed to post links
+}
