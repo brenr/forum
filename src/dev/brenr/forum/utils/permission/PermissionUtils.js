@@ -3,15 +3,12 @@ module.exports = class PermissionUtils {
 
     // Posts
     static canViewPost(user, post) {
-        
+
     }
     static canCreatePost(user, category) {
         
     }
     static canEditPost(user, post) {
-
-    }
-    static canEditOtherPost(user, otherUser) {
 
     }
     static canHidePost(user, post) {
