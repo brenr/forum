@@ -22,9 +22,10 @@ module.exports = class Permission {
     static CAN_CONFIGURE_USERS = ordinal++;
 
     // Thread-specific Flags
+    static CAN_HIDE_POST = ordinal++;
     static CAN_HIDE_THREAD = ordinal++;
     static CAN_STICKY_THREAD = ordinal++;
-    static CAN_HIDE_POSTS = ordinal++;
+    static CAN_VIEW_POSTS = ordinal++;
     static CAN_QUOTE_POSTS = ordinal++;
     static CAN_EMBED_IMAGES = ordinal++;
     static CAN_EMBED_LINKS = ordinal++;
