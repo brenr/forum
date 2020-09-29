@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const config = require('../../../../../config.js');
 const ForumRouter = require('../routing/ForumRouter.js');
 
@@ -15,6 +16,7 @@ module.exports = class Bootstrapper {
 
         // Set the templating engine to EJS
         expressServer.set('view engine', 'ejs');
+        expressServer.set('views', path.join(__dirname, '../view'));
 
 
         // TO DO add express-session middleware

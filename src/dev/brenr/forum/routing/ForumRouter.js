@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const config = require("../../../../../config.js");
-const RendererUtils = require("../utils/rendering/RendererUtils.js");
 
 module.exports = class ForumRouter extends Router {
 
@@ -9,7 +8,7 @@ module.exports = class ForumRouter extends Router {
 
         // Forum root view
         this.get(config.FORUM_ROOT_DIRECTORY, (request, response, next) => {
-            response.render(RendererUtils.getFile('index'));
+            response.render('index');
         });
 
         /**
