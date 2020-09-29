@@ -1,0 +1,24 @@
+{
+  "name": "forum",
+  "version": "1.0.0",
+  "description": "## Introduction This forum is written in node.js and is designed to be extremely modular.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brenr/forum.git"
+  },
+  "author": "Brendan M. Rosa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brenr/forum/issues"
+  },
+  "homepage": "https://github.com/brenr/forum#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "pg": "^8.3.3"
+  }
+}
