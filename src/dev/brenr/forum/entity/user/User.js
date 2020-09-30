@@ -1,12 +1,24 @@
 
 module.exports = class User {
 
-    /**
-     * Takes in an express session and fetches and returns from db
-     * @param {number} userId the user id in the database
-     */
-    constructor(userId) {
-
+    constructor(
+        id,
+        email,
+        username,
+        userGroups,
+        postCount,
+        dateCreated,
+        isMuted,
+        isBanned
+    ) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.userGroups = userGroups;
+        this.postCount = postCount;
+        this.dateCreated = dateCreated;
+        this.isMuted = isMuted;
+        this.isBanned = isBanned;
     }
 
 }

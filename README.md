@@ -19,8 +19,6 @@ This forum is written in node.js and is designed to be extremely modular.
     - **password_hash** *char[128]* - The SHA3-512 password hash
     - **username** *text* - The username shown throughout the forum
     - **user_groups** *smallint[]* - The user groups with which the user belongs to
-    - **muted_until** *timestamp* - Timestamp until the user is unmuted
-    - **banned_until** *timestamp* - Timestamp until the user is unbanned
     - **date_created** *timestamp* - Timestamp of when the user registered
 
   - **user_group** > Columns
@@ -30,13 +28,20 @@ This forum is written in node.js and is designed to be extremely modular.
     - **is_super_admin** *integer* - Whether this role has full, unrestricted privileges
     - **css_class** *text* - Arbitrary CSS class used for styling
 
+  - **user_strike** > Columns
+    - **id** *integer* - Primary key
+    - **type** *smallint* - The type of strike (*1 = mute, 2 = ban*)
+    - **user_id** *integer* - The user id with which this ban entry pertains to
+    - **issuing_user_id** *integer* - The user id that issued the strike
+    - **reason** *text* - The reason the strike was issued.
+
   - **post** > Columns
     - **id** *integer* - Primary key
     - **user_id** *integer* - The user that created the post
     - **date_created** *timestamp* - Timestamp of when this post resource was created
     - **body** *text* - The post body
-    - **original_id** *integer* - Default *NULL*. If this is an edited post, it will reference the original post id. This column is used to sort the post in numerical fashion.
-    - **is_hidden** *boolean* - Whether the post is hidden.
+    - **original_id** *integer* - Default *NULL*. If this is an edited post, it will reference the original post id. This column is used to sort the post in numerical fashion
+    - **is_hidden** *boolean* - Whether the post is hidden
 
   - **thread** > Columns
     - **id** *integer* - Primary key
