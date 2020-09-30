@@ -51,8 +51,7 @@ This forum is written in node.js and is designed to be extremely modular.
 | **date_created** | *timestamp* | Timestamp of when this post resource was created
 | **thread_id** | *integer* | The parent thread id
 | **body** | *text* | The post body
-| **edited_by_user_id** | *integer* | Default *NULL*. If this is an edited post, this is the author of the edited post.
-
+| **edited_by_user_id** | *integer* | Default *NULL*. If this is an edited post, this is the author of the edited post
 | **is_hidden** | *boolean* | Whether the post is hidden
 
 ##### thread
