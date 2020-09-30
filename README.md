@@ -58,13 +58,13 @@ This forum is written in node.js and is designed to be extremely modular.
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key
-| **user_id** | *integer* | The owner of the thread
 | **date_created** | *integer* | When the thread was created
 | **category_id** | *integer* | The category this thread is under
 | **title** | *text* | The thread title
 | **is_sticky** | *boolean* | Whether the thread is stickied
 | **sort_id** | *smallint* | Sort order of this stickied thread
 | **is_hidden** | *boolean* | Whether the thread is hidden
+| **is_locked** | *boolean* | Whether the thread is locked
 | **auto_hide_new_posts** | *boolean* | Whether or not new posts are hidden by default
 | **permissions_by_group** | *hstore* | Array of key value pairs: `user_group.id` -> `integer`
 | **permissions_by_user** | *hstore* | Array of key value pairs: `user.id` -> `integer`
