@@ -1,12 +1,24 @@
 
 module.exports = class Post {
 
-    constructor(id, author, dateCreated, edited, body) {
+    constructor(
+        id,
+        originalPost,
+        user,
+        dateCreated,
+        thread,
+        body,
+        editedByUser,
+        isHidden
+    ) {
         this.id = id;
-        this.author = author;
-        this.dateCreated = new Date(dateCreated);
-        this.edited = edited;
+        this.originalPost = originalPost;
+        this.user = user;
+        this.dateCreated = dateCreated;
+        this.thread = thread;
         this.body = body;
+        this.editedByUser = editedByUser;
+        this.isHidden = isHidden;
     }
-    
+
 }

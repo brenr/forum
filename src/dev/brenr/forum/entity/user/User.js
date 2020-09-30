@@ -9,7 +9,8 @@ module.exports = class User {
         postCount,
         dateCreated,
         isMuted,
-        isBanned
+        isBanned,
+        isLocked
     ) {
         this.id = id;
         this.email = email;
@@ -19,6 +20,7 @@ module.exports = class User {
         this.dateCreated = dateCreated;
         this.isMuted = isMuted;
         this.isBanned = isBanned;
+        this.isLocked = isLocked;
     }
 
 }

@@ -1,11 +1,20 @@
 
 module.exports = class Category {
 
-    /**
-     * Creates a Category object
-     * @param {number} categoryId the category id in the database
-     */
-    constructor(categoryId) {
-        this.categoryId = categoryId;
+    constructor(
+        id,
+        name,
+        section,
+        sortId,
+        permissionByGroup,
+        permissionByUser
+    ) {
+        this.id = id;
+        this.name = name;
+        this.section = section;
+        this.sortId = sortId;
+        this.permissionByGroup = permissionByGroup;
+        this.permissionByUser = permissionByUser;
     }
+
 }

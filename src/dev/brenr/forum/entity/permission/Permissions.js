@@ -1,11 +1,10 @@
-let __permissions__;
-module.exports = class PermissionMap {
+module.exports = class Permissions {
     /**
-     * Constructs a Permission Map
+     * Constructs a Permissions object
      * @param {number} permissions The permissions represented as an integer
      */
     constructor(permissions) {
-        __permissions__ = permissions;
+        this.__permissions__ = permissions;
     }
     
     /**
@@ -13,7 +12,7 @@ module.exports = class PermissionMap {
      * @param {number} ordinal the permission ordinal from __Permission__
      */
     getPermission(ordinal) {
-        return (__permissions__ >> ordinal) & 0b1;
+        return (this.__permissions__ >> ordinal) & 0b1;
     }
 
     /**
@@ -22,7 +21,7 @@ module.exports = class PermissionMap {
      * @param {Boolean} boolean whether or not this permission is allowed
      */
     setPermission(ordinal, boolean) {
-        __permissions__ ^= (-boolean ^ __permissions__) & (0b1 << ordinal);
+        this.__permissions__ ^= (-boolean ^ this.__permissions__) & (0b1 << ordinal);
     }
 
     /**
@@ -32,15 +31,15 @@ module.exports = class PermissionMap {
      */
     setPermissions(permissions) {
         for (let [key, value] of Object.entries(permissions)) {
-            setPermission(key, value);
+            this.setPermission(key, value);
         }
     }
 
     /**
      * @returns {number} integer representation of this permission map
      */
-    asInteger() {
-        return __permissions__;
+    toInteger() {
+        return this.__permissions__;
     }
 
 };

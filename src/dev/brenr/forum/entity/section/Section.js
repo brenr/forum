@@ -1,11 +1,17 @@
 
 module.exports = class Section {
 
-    /**
-     * Creates a Section object
-     * @param {number} sectionId the section id in the database
-     */
-    constructor(sectionId) {
-        this.sectionId = sectionId;
+    constructor(
+        id,
+        name,
+        sortId,
+        permissionsByGroup,
+        permissionsByUser
+    ) {
+        this.id = id;
+        this.name = name;
+        this.sortId = sortId;
+        this.permissionsByGroup = permissionsByGroup;
+        this.permissionsByUser = permissionsByUser;
     }
 }

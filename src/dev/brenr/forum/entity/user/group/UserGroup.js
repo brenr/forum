@@ -1,12 +1,18 @@
 
 module.exports = class UserGroup {
 
-    /**
-     * 
-     * @param {number} groupId the group id in the database
-     */
-    constructor(groupId) {
-
+    constructor(
+        id,
+        name,
+        powerLevel,
+        isSuperAdmin,
+        cssClass
+    ) {
+        this.id = id;
+        this.name = name;
+        this.powerLevel = powerLevel;
+        this.isSuperAdmin = isSuperAdmin;
+        this.cssClass = cssClass;
     }
 
 }
