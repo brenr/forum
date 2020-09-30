@@ -33,7 +33,9 @@ This forum is written in node.js and is designed to be extremely modular.
     - **type** *smallint* - The type of strike (*1 = mute, 2 = ban*)
     - **user_id** *integer* - The user id with which this ban entry pertains to
     - **issuing_user_id** *integer* - The user id that issued the strike
-    - **reason** *text* - The reason the strike was issued.
+    - **reason** *text* - The reason the strike was issued
+    - **date_start** *timestamp* - When the strike was issued
+    - **date_end** *timestamp* - When the strike expires
 
   - **post** > Columns
     - **id** *integer* - Primary key
