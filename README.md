@@ -54,7 +54,7 @@ This forum is written in node.js and is designed to be extremely modular.
     - **is_sticky** *boolean* - Whether the thread is stickied
     - **sort_id** *smallint* - Sort order of this stickied thread
     - **is_hidden** *boolean* - Whether the thread is hidden
-    - **auto_hide_new_posts** *boolean - Whether or not new posts are hidden by default
+    - **auto_hide_new_posts** *boolean* - Whether or not new posts are hidden by default
     - **permissions_by_group** *hstore* - Array of key value pairs: `user_group.id` -> `integer`
     - **permissions_by_user** *hstore* - Array of key value pairs: `user.id` -> `integer`
 
