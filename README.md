@@ -48,8 +48,10 @@ This forum is written in node.js and is designed to be extremely modular.
 | **id** | *integer* | Primary key
 | **user_id** | *integer* | The user that created the post
 | **date_created** | *timestamp* | Timestamp of when this post resource was created
+| **thread_id** | *integer* | The parent thread id
 | **body** | *text* | The post body
-| **original_id** | *integer* | Default *NULL*. If this is an edited post, it will reference the original post id. This column is used to sort the post in numerical fashion
+| **edited_by_user_id** | *integer* | Default *NULL*. If this is an edited post, this is the author of the edited post.
+| **original_post_id** | *integer* | Default *NULL*. If this is an edited post, it will reference the original post id. This column is used to sort the post in numerical fashion
 | **is_hidden** | *boolean* | Whether the post is hidden
 
 ##### thread
@@ -71,8 +73,8 @@ This forum is written in node.js and is designed to be extremely modular.
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key
-| **section_id** | *integer* | The section id this category is under
 | **name** | *text* | The category name
+| **section_id** | *integer* | The section id this category is under
 | **sort_id** | *smallint* | The sort order relative to other categories in this section
 | **permissions_by_group** | *hstore* | Array of key value pairs: `user_group.id` -> `integer`
 | **permissions_by_user** | *hstore* | Array of key value pairs: `user.id` -> `integer`
