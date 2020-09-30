@@ -24,7 +24,7 @@ This forum is written in node.js and is designed to be extremely modular.
   - **user_group** > Columns
     - **id** *integer* - Primary key
     - **name** *integer* - The name of the user group
-    - **power_level** *smallint* - The power level ensures users of a lower or same power level cannot affect users of a higher power level.
+    - **power_level** *smallint* - The power level ensures users may only affect users less than their own power level.
     - **is_super_admin** *integer* - Whether this role has full, unrestricted privileges
     - **css_class** *text* - Arbitrary CSS class used for styling
 
