@@ -35,7 +35,7 @@ This forum is written in node.js and is designed to be extremely modular.
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key
-| **type** | *smallint* | The type of strike (*1 = mute, 2 = ban*)
+| **type** | *smallint* | The type of strike (*1 = mute, 2 = ban, 3 = locked*)
 | **user_id** | *integer* | The user id with which this ban entry pertains to
 | **issuing_user_id** | *integer* | The user id that issued the strike
 | **reason** | *text* | The reason the strike was issued
@@ -45,13 +45,14 @@ This forum is written in node.js and is designed to be extremely modular.
 ##### post
 | column | type | summary |
 | ------ | ---- | ------- |
-| **id** | *integer* | Primary key
+| **id** | *integer* | Primary key, used to identify the post revision
+| **original_id** | *integer* | This refers to the original `post.id` resource created
 | **user_id** | *integer* | The user that created the post
 | **date_created** | *timestamp* | Timestamp of when this post resource was created
 | **thread_id** | *integer* | The parent thread id
 | **body** | *text* | The post body
 | **edited_by_user_id** | *integer* | Default *NULL*. If this is an edited post, this is the author of the edited post.
-| **original_post_id** | *integer* | Default *NULL*. If this is an edited post, it will reference the original post id. This column is used to sort the post in numerical fashion
+
 | **is_hidden** | *boolean* | Whether the post is hidden
 
 ##### thread
