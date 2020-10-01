@@ -11,8 +11,8 @@ module.exports = class Permissions {
      * Gets a single permission
      * @param {number} ordinal the permission ordinal from __Permission__
      */
-    getPermission(ordinal) {
-        return (this.__permissions__ >> ordinal) & 0b1;
+    get(ordinal) {
+        return Boolean((this.__permissions__ >> ordinal) & 0b1);
     }
 
     /**
@@ -20,25 +20,43 @@ module.exports = class Permissions {
      * @param {number} ordinal the permission ordinal from __Permission__
      * @param {Boolean} boolean whether or not this permission is allowed
      */
-    setPermission(ordinal, boolean) {
-        this.__permissions__ ^= (-boolean ^ this.__permissions__) & (0b1 << ordinal);
+    set(ordinal, value) {
+        this.__permissions__ ^= (-value ^ this.__permissions__) & (0b1 << ordinal);
     }
 
     /**
-     * Sets multiple permissions given an object key value pairs. Key 
+     * Sets multiple permissions given an object ordinal value pairs. Ordinal 
      * being the __Permission__ ordinal and the value being a boolean
      * @param {{number: Boolean}} permissions 
      */
     setPermissions(permissions) {
-        for (let [key, value] of Object.entries(permissions)) {
-            this.setPermission(key, value);
+        for (let [ordinal, value] of Object.entries(permissions)) {
+            this.set(ordinal, value);
         }
+    }
+
+    /**
+     * 
+     * @param {Permissions} permissions the permissions object to AND with
+     * @returns {Permissions} the new AND permissions
+     */
+    and(permissions) {
+        return new Permissions(this.asInteger() & permissions.asInteger());
+    }
+
+    /**
+     * 
+     * @param {Permissions} permissions the permissions to OR with
+     * @returns {Permissions} the new OR permissions
+     */
+    or(permissions) {
+        return new Permissions(this.asInteger() | permissions.asInteger());
     }
 
     /**
      * @returns {number} integer representation of this permission map
      */
-    toInteger() {
+    asInteger() {
         return this.__permissions__;
     }
 

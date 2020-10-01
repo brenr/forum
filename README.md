@@ -1,18 +1,36 @@
 # Forum
 
 ## Introduction
-This forum is written in node.js and is designed to be extremely modular.
+This forum is written in Node with several goals in mind to address competitor product oversights.
 
-## Structure
+## Goals
+- **Elegant source code**, the source code should be kept simple, clean and well-documented
+- **Pluggable**, the ability to use an existing express server and express-session
+- **Modular plugin and theming system**, adheres to the EJS standard, allows for changing entire layouts and custom CSS
+- **Advanced permission system**, high granularity accomplished by every forum entity having its own specific permissions based on user group or user while also inheriting permissions from ancestor forum entities
+- **Performant**, by caching various computationally-expensive areas of the back end
+- **Hybrid RESTful API**, GET endpoint URLs that are suffixed with `.json` will return JSON instead of HTML
+- **Trigger System**, automated actions based on certain criteria met
+- **Intuitive UI**, an elegant and modern out-of-box interface for the forum and administration panel. Informational clarity through tooltips and inline summaries
+### Future goals
+- Offer product as a SaaS.
+
+## Internal structure
 ### Entities
-- **Section** - Sections contain categories
-- **Category** - Categories contain threads
-- **Thread** - Threads contain posts
-- **Post** - Each post can be created, edited, etc.
-  
-### Database
-#### Tables
-##### user
+- **Section**, contains categories
+- **Category**, contains threads
+- **Thread**, contains posts
+- **Post**, created by users
+- **User**
+
+### Types
+- **Permission**, abstract class to allow any permission type to be mutated
+- **ForumPermission**, pertains to the forum entity
+- **UserGroupPermission**, pertains to a user group
+
+## Database 
+### Tables
+#### user
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key
@@ -22,16 +40,16 @@ This forum is written in node.js and is designed to be extremely modular.
 | **user_groups** | *smallint[]* | The user groups with which the user belongs to
 | **date_created** | *timestamp* | Timestamp of when the user registered
 
-##### user_group
+#### user_group
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key
 | **name** | *integer* | The name of the user group
-| **power_level** | *smallint* | The power level ensures users may only affect users less than their own power level.
-| **is_super_admin** | *integer* | Whether this role has full, unrestricted privileges
+| **power_level** | *smallint* | This ensures users may only affect users less than their own power level
+| **permissions** | *integer* | Group-specific permissions apply globally and pertain to moderation and administration
 | **css_class** | *text* | Arbitrary CSS class used for styling
 
-##### user_strike
+#### user_strike
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key
@@ -42,7 +60,7 @@ This forum is written in node.js and is designed to be extremely modular.
 | **date_start** | *timestamp* | When the strike was issued
 | **date_end** | *timestamp* | When the strike expires
 
-##### post
+#### post
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key, used to identify the post revision
@@ -54,7 +72,7 @@ This forum is written in node.js and is designed to be extremely modular.
 | **edited_by_user_id** | *integer* | Default *NULL*. If this is an edited post, this is the author of the edited post
 | **is_hidden** | *boolean* | Whether the post is hidden
 
-##### thread
+#### thread
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key
@@ -69,7 +87,7 @@ This forum is written in node.js and is designed to be extremely modular.
 | **permissions_by_group** | *hstore* | Array of key value pairs: `user_group.id` -> `integer`
 | **permissions_by_user** | *hstore* | Array of key value pairs: `user.id` -> `integer`
 
-##### category
+#### category
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key
@@ -79,7 +97,7 @@ This forum is written in node.js and is designed to be extremely modular.
 | **permissions_by_group** | *hstore* | Array of key value pairs: `user_group.id` -> `integer`
 | **permissions_by_user** | *hstore* | Array of key value pairs: `user.id` -> `integer`
 
-##### section
+#### section
 | column | type | summary |
 | ------ | ---- | ------- |
 | **id** | *integer* | Primary key

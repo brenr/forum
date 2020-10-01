@@ -1,5 +1,5 @@
 let ordinal = 0;
-module.exports = class Permission {
+module.exports = class ForumPermission {
 
     // Access
     static CAN_ACCESS = ordinal++;
@@ -10,7 +10,7 @@ module.exports = class Permission {
     static CAN_CREATE_CATEGORY = ordinal++;
     static CAN_CREATE_SECTION = ordinal++;
 
-    // Modification
+    // Editing
     static CAN_EDIT_OWN_POST = ordinal++;
     static CAN_EDIT_OTHER_POSTS = ordinal++;
     static CAN_EDIT_THREAD_TITLE = ordinal++;
@@ -25,7 +25,10 @@ module.exports = class Permission {
     static CAN_HIDE_POST = ordinal++;
     static CAN_HIDE_THREAD = ordinal++;
     static CAN_STICKY_THREAD = ordinal++;
-    static CAN_VIEW_POSTS = ordinal++;
+    static CAN_LOCK_THREAD = ordinal++;
+    static CAN_VIEW_HIDDEN_POSTS = ordinal++;
+    static CAN_VIEW_HIDDEN_THREADS = ordinal++;
+    static CAN_VIEW_POST_REVISIONS = ordinal++;
     static CAN_QUOTE_POSTS = ordinal++;
     static CAN_EMBED_IMAGES = ordinal++;
     static CAN_EMBED_LINKS = ordinal++;
